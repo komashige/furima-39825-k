@@ -3,41 +3,41 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | unique: true|
+| email              | string | null: false|
 | encrypted_password | string | null: false |
 | name_first         | string | null: false |
 | name_last          | string | null: false |
 | name_first_kana    | string | null: false |
 | name_last_kana     | string | null: false |
-| date_of_birth      | string | null: false |
+| birthdate          | date   | null: false |
 
 
 ### Association
 
 - has_many :items
 - has_many :buys
-- has_one :ships
+
 
 ## items テーブル
 
-| Column      | Type   | Options     |
-| ------      | ------ | ----------- |
-| name        | string | null: false |
-| image       | text   | null: false |
-| category    | string | null: false |
-| condition   | string | null: false |
-| description | text   | null: false |
-| user_id     | references | null: false, foreign_key: true |
-| ship_cost   | string | null: false |
-| ship_area   | string | null: false |
-| ship_day    | string | null: false |
-| price       | string | null: false |
-
+| Column         | Type   | Options     |
+| ------         | ------ | ----------- |
+| information    | string | null: false |
+| name           | string | null: false |
+| category_id    | integer | null: false |
+| condition_id   | integer | null: false |
+| description    | text   | null: false |
+| user           | references | null: false, foreign_key: true |
+| ship_cost_id   | integer | null: false |
+| ship_area_id   | integer | null: false |
+| ship_day_id    | integer | null: false |
+| price          | integer | null: false |
+ 
 ### Association
 
-- has_many :buys
-- belongs_to :users
-- belongs_to :ships
+- belongs_to :buy
+- belongs_to :user
+
 
 ## buys テーブル
 
@@ -48,20 +48,21 @@
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one :ships
+- belongs_to :user
+- belongs_to :item
+- has_one :ship
 
 ## ships テーブル
 
 | Column           | Type       | Options      |
 | -------          | ---------- | -------------|
+| name             | string     | null: false  |
 | post_code        | string     | null: false  |
-| state            | string     | null: false  |
+| ship_area_id     | integer    | null: false  |
 | city             | string     | null: false  |
 | street_address   | string     | null: false  |
 | telephone_number | string     | null: false  |
 
 ### Association
 
-- has_one :buys
+- has_one :buy
