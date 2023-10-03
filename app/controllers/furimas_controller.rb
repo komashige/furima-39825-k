@@ -3,3 +3,5 @@ class FurimasController < ApplicationController
     @furimas = Furima.all
   end
 end
+
+ 

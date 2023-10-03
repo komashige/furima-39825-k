@@ -1,4 +1,9 @@
 <%= render "shared/header" %>
+  <div>
+    <% link_to  new_user_session_path %>
+    <% link_to  new_user_registration_path %>
+    <% link_to  destroy_user_session_path, method: :delete %>
+  </div>
 <div class='main'>
 
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
