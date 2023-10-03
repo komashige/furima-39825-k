@@ -22,7 +22,6 @@
 
 | Column         | Type    | Options     |
 | ------         | ------  | ----------- |
-| information    | text    | null: false |
 | name           | string  | null: false |
 | category_id    | integer | null: false |
 | condition_id   | integer | null: false |
@@ -35,7 +34,7 @@
  
 ### Association
 
-- belongs_to :buy
+- has_one :buy
 - belongs_to :user
 
 
