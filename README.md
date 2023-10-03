@@ -1,24 +1,69 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false |
+| name_first         | string | null: false |
+| name_last          | string | null: false |
+| name_first_kana    | string | null: false |
+| name_last_kana     | string | null: false |
+| birth_date         | date   | null: false |
 
-Things you may want to cover:
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :buys
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column         | Type    | Options     |
+| ------         | ------  | ----------- |
+| name           | string  | null: false |
+| category_id    | integer | null: false |
+| condition_id   | integer | null: false |
+| description    | text    | null: false |
+| user           | references | null: false, foreign_key: true |
+| ship_cost_id   | integer | null: false |
+| ship_area_id   | integer | null: false |
+| ship_day_id    | integer | null: false |
+| price          | integer | null: false |
+ 
+### Association
 
-* How to run the test suite
+- has_one :buy
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## buys テーブル
 
-* ...
+| Column    | Type       | Options                        |
+| ------    | ---------- | ------------------------------ |
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :ship
+
+## ships テーブル
+
+| Column           | Type       | Options      |
+| -------          | ---------- | -------------|
+| name             | string     | null: false  |
+| post_code        | string     | null: false  |
+| ship_area_id     | integer    | null: false  |
+| city             | string     | null: false  |
+| street_address   | string     | null: false  |
+| telephone_number | string     | null: false  |
+| buy              | references | null: false, foreign_key: true |
+
+### Association
+
+- has_one :buy
