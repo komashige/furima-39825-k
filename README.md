@@ -3,13 +3,13 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false|
+| email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 | name_first         | string | null: false |
 | name_last          | string | null: false |
 | name_first_kana    | string | null: false |
 | name_last_kana     | string | null: false |
-| birthdate          | date   | null: false |
+| birth_date         | date   | null: false |
 
 
 ### Association
@@ -20,13 +20,13 @@
 
 ## items テーブル
 
-| Column         | Type   | Options     |
-| ------         | ------ | ----------- |
-| information    | string | null: false |
-| name           | string | null: false |
+| Column         | Type    | Options     |
+| ------         | ------  | ----------- |
+| information    | text    | null: false |
+| name           | string  | null: false |
 | category_id    | integer | null: false |
 | condition_id   | integer | null: false |
-| description    | text   | null: false |
+| description    | text    | null: false |
 | user           | references | null: false, foreign_key: true |
 | ship_cost_id   | integer | null: false |
 | ship_area_id   | integer | null: false |
@@ -43,8 +43,9 @@
 
 | Column    | Type       | Options                        |
 | ------    | ---------- | ------------------------------ |
-| user_id   | references | null: false, foreign_key: true |
-| items_id  | references | null: false, foreign_key: true |
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
+
 
 ### Association
 
@@ -62,6 +63,7 @@
 | city             | string     | null: false  |
 | street_address   | string     | null: false  |
 | telephone_number | string     | null: false  |
+| buy              | references | null: false, foreign_key: true |
 
 ### Association
 
