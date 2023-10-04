@@ -10,12 +10,14 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :last_name_kana, presence: true
   validates :birth_date, presence: true
+  validates :password_confirmation, presence: true
+  validates :password, presence: true
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates :password, format: { with: VALID_PASSWORD_REGEX }
 
-  VALID_KANJI_REGEX = /\A[一-龥々]+\z/.freeze
-  validates :first_name, :last_name, format: { with: VALID_KANJI_REGEX }
+  VALID_NAME_REGEX = /\A[\p{Hiragana}\p{Katakana}\p{Han}ー－]+\z/.freeze
+  validates :first_name, :last_name, format: { with: VALID_NAME_REGEX }
 
   VALID_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
   validates :first_name_kana, :last_name_kana, format: { with: VALID_KANA_REGEX }
