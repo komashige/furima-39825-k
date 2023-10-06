@@ -13,10 +13,10 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      # アイテムの保存が成功したらトップページにリダイレクト
+    
       redirect_to root_path
     else
-      render :new
+      render :new,status: :unprocessable_entity
     end
 
   end
