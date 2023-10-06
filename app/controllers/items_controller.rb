@@ -12,8 +12,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-    
+    if @item.save    
       redirect_to root_path
     else
       render :new,status: :unprocessable_entity
@@ -21,19 +20,7 @@ class ItemsController < ApplicationController
 
   end
 
-  def update
-    if @item.update(item_params)
-      redirect_to item_path(@item), notice: "Item was successfully updated."
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @item.destroy
-    redirect_to items_path, notice: "Item was successfully destroyed."
-  end
-
+ 
 
   private
 
