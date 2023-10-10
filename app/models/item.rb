@@ -1,7 +1,5 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  
-
   belongs_to :user
   has_one_attached :image
 
@@ -22,4 +20,6 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :price, numericality: { only_integer: true, message: "is invalid. Input half-width characters"}
+
+  
 end
