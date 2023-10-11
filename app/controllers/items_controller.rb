@@ -19,8 +19,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    
+  def show   
   end  
 
   def edit
@@ -29,11 +28,7 @@ class ItemsController < ApplicationController
     end
   end 
 
-
-  
-
-  def update
-   
+  def update 
     if @item.update(item_params)
       redirect_to item_path(@item)
     else
@@ -43,8 +38,10 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    if item.user_id == current_user.id
+      item.destroy
+    end
+      redirect_to root_path 
   end
 
  
