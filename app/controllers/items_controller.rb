@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :set_item, only: [:edit, :show, :update]
 
   def index
@@ -19,8 +19,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    
+  def show   
   end  
 
   def edit
@@ -29,16 +28,20 @@ class ItemsController < ApplicationController
     end
   end 
 
-
-  
-
-  def update
-   
+  def update 
     if @item.update(item_params)
       redirect_to item_path(@item)
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    if item.user_id == current_user.id
+      item.destroy
+    end
+      redirect_to root_path 
   end
 
  
