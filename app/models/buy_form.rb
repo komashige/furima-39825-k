@@ -1,6 +1,6 @@
 class BuyForm 
   include ActiveModel::Model
-  attr_accessor :image, :name, :description, :category_id, :condition_id, :ship_cost_id, :ship_area_id, :ship_day_id, :price, :nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date, :email, :password
+  attr_accessor :item_id, :user_id, :image, :name, :description, :category_id, :condition_id, :ship_cost_id, :ship_area_id, :ship_day_id, :price, :nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date, :email, :password
 
   validates :image, presence: true
   validates :name, presence: true
