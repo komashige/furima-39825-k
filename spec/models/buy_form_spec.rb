@@ -53,7 +53,19 @@ RSpec.describe BuyForm, type: :model do
       it '電話番号が10桁または11桁でないと保存できない' do
         @buy_form.telephone_number = '090123456789' # 12桁の番号
         @buy_form.valid?
-        expect(@buy_form.errors.full_messages).to include("Telephone number input only number")
+        expect(@buy_form.errors.full_messages).to include("Telephone number is invalid. Input only number")
+      end
+
+      it '電話番号が9桁以下だと保存できない' do
+        @buy_form.telephone_number = '090123456' # 9桁の番号
+        @buy_form.valid?
+        expect(@buy_form.errors.full_messages).to include("Telephone number is invalid. Input only number")
+      end
+
+      it '電話番号が数字でないと保存できない' do
+        @buy_form.telephone_number = 'abc1234567' # 12桁の番号
+        @buy_form.valid?
+        expect(@buy_form.errors.full_messages).to include("Telephone number is invalid. Input only number")
       end
     end
   end

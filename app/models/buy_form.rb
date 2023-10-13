@@ -7,7 +7,7 @@ class BuyForm
     validates :ship_area_id, numericality: { other_than: 1, message: "select" }
     validates :city,                presence: { message: "can't be blank" }
     validates :street_address,      presence: { message: "can't be blank" }
-    validates :telephone_number, presence: { message: "can't be blank" }, format: { with: /\A\d{10,11}\z/, message: "is invalid. Input only number" }, length: { in: 10..11, message: "is too short" }
+    validates :telephone_number, presence: { message: "can't be blank" }, format: { with: /\A\d{10,11}\z/, message: "is invalid. Input only number" }
   end
   validates :user_id, presence: true
   validates :item_id, presence: true
