@@ -1,8 +1,9 @@
 class BuyForm 
   include ActiveModel::Model
-  attr_accessor :item_id, :user_id, :post_code, :ship_area_id, :city, :street_address, :telephone_number, :building_name
+  attr_accessor :item_id, :user_id, :post_code, :ship_area_id, :city, :street_address, :telephone_number, :building_name, :token
 
   with_options presence: true do
+    validates :token 
     validates :post_code,           presence: { message: "can't be blank" }, format: { with: /\A\d{3}-\d{4}\z/, message: "input correctly" }
     validates :ship_area_id, numericality: { other_than: 1, message: "select" }
     validates :city,                presence: { message: "can't be blank" }

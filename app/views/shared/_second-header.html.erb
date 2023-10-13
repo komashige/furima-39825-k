@@ -1,3 +1,7 @@
 <header class='second-header'>
-  <%= link_to image_tag("furima-logo-color.png", class:"second-logo"), item_buys_path(@item) %>
+  <% if @item %>
+    <%= link_to image_tag("furima-logo-color.png", class:"second-logo"), item_buys_path(@item) %>
+  <% else %>
+    <%= link_to image_tag("furima-logo-color.png", class:"second-logo"), root_path %>
+  <% end %>
 </header>
