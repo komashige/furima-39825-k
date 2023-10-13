@@ -56,7 +56,7 @@
 
 | Column           | Type       | Options      |
 | -------          | ---------- | -------------|
-| name             | string     | null: false  |
+| building_name    | string     |              |
 | post_code        | string     | null: false  |
 | ship_area_id     | integer    | null: false  |
 | city             | string     | null: false  |

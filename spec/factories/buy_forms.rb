@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :ship do
+  factory :buy_form do
     post_code { "123-4567" } 
     ship_area_id { 2 } 
     city { "横浜市緑区" }

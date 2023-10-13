@@ -1,7 +1,7 @@
 class CreateShips < ActiveRecord::Migration[7.0]
   def change
     create_table :ships do |t|
-      t.string :name,               null: false
+      t.string :building_name     
       t.string :post_code,          null: false
       t.integer :ship_area_id,      null: false
       t.string :city,               null: false
