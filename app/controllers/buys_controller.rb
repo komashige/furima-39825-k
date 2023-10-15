@@ -2,6 +2,10 @@ class BuysController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
+    # 出品者が入れないようにするため。
+    if @item.user_id == current_user.id || @item.buy.present?
+      redirect_to root_path
+    end
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @buy_form = BuyForm.new
   end
