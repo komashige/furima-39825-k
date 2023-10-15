@@ -6,6 +6,6 @@ class Ship < ApplicationRecord
   #validates :street_address,      presence: { message: "can't be blank" }
   #validates :telephone_number,    presence: { message: "can't be blank" }, format: { with: /\A\d{10,11}\z/, message: "input only number" }
   
-  has_one :buy
+  belongs_to :buy
 
 end
