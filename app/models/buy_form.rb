@@ -2,16 +2,18 @@ class BuyForm
   include ActiveModel::Model
   attr_accessor :item_id, :user_id, :post_code, :ship_area_id, :city, :street_address, :telephone_number, :building_name, :token
 
-  with_options presence: true do
+  with_options presence: { message: "can't be blank" } do
     validates :token 
-    validates :post_code,           presence: { message: "can't be blank" }, format: { with: /\A\d{3}-\d{4}\z/, message: "input correctly" }
+    validates :post_code,            format: { with: /\A\d{3}-\d{4}\z/, message: "is invalid" }
     validates :ship_area_id, numericality: { other_than: 1, message: "select" }
-    validates :city,                presence: { message: "can't be blank" }
-    validates :street_address,      presence: { message: "can't be blank" }
-    validates :telephone_number, presence: { message: "can't be blank" }, format: { with: /\A\d{10,11}\z/, message: "is invalid. Input only number" }
+    validates :city                
+    validates :street_address    
+    validates :telephone_number,  format: { with: /\A\d{10,11}\z/, message: "is invalid. Input only number" }
+    validates :user_id, presence: true
+    validates :item_id, presence: true
   end
-  validates :user_id, presence: true
-  validates :item_id, presence: true
+
+  
 
   def save
     return false unless valid?

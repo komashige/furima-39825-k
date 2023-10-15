@@ -26,6 +26,12 @@ RSpec.describe BuyForm, type: :model do
         expect(@buy_form.errors.full_messages).to include("Post code can't be blank")
       end
 
+      it 'ハイフンが含まれていない場合は保存できない' do
+        @buy_form.post_code = '1234567'
+        @buy_form.valid?
+        expect(@buy_form.errors.full_messages).to include("Post code is invalid")
+      end
+
       it '都道府県が選択されていないと保存できない' do
         @buy_form.ship_area_id = 1
         @buy_form.valid?
@@ -72,6 +78,18 @@ RSpec.describe BuyForm, type: :model do
         @buy_form.token = nil
         @buy_form.valid?
         expect(@buy_form.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'userが紐付いていない場合は保存できない' do
+        @buy_form.user_id = nil
+        @buy_form.valid?
+        expect(@buy_form.errors.full_messages).to include("User can't be blank")
+      end
+  
+      it 'itemが紐付いていない場合は保存できない' do
+        @buy_form.item_id = nil
+        @buy_form.valid?
+        expect(@buy_form.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
