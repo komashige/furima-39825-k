@@ -34,7 +34,7 @@
  
 ### Association
 
-- belongs_to :buy
+- has_one :buy
 - belongs_to :user
 
 
@@ -56,7 +56,7 @@
 
 | Column           | Type       | Options      |
 | -------          | ---------- | -------------|
-| name             | string     | null: false  |
+| building_name    | string     |              |
 | post_code        | string     | null: false  |
 | ship_area_id     | integer    | null: false  |
 | city             | string     | null: false  |
@@ -66,4 +66,4 @@
 
 ### Association
 
-- has_one :buy
+- belongs_to :buy
