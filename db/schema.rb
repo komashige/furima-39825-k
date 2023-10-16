@@ -48,14 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_031709) do
     t.index ["user_id"], name: "index_buys_on_user_id"
   end
 
-  create_table "furimas", charset: "utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "text"
-    t.text "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "items", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "category_id", null: false
